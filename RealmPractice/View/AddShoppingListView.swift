@@ -15,26 +15,28 @@ struct AddShoppingListView: View {
     @ObservedResults(ShoppingList.self) var shoppingLists
     
     var body: some View {
-        VStack {
-            Form {
-                TextField("Enter title", text: $title)
-                TextField("Enter address", text: $address)
-                
-                Button {
-                    let newShoppingList = ShoppingList()
-                    newShoppingList.title = title
-                    newShoppingList.address = address
-                    $shoppingLists.append(newShoppingList)
+        NavigationView {
+            VStack {
+                Form {
+                    TextField("Enter title", text: $title)
+                    TextField("Enter address", text: $address)
                     
-                    dismiss()
-                } label: {
-                    Text("Save")
-                        .frame(maxWidth: .infinity)
+                    Button {
+                        let newShoppingList = ShoppingList()
+                        newShoppingList.title = title
+                        newShoppingList.address = address
+                        $shoppingLists.append(newShoppingList)
+                        
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
                 }
-                .buttonStyle(.bordered)
             }
+            .navigationTitle("New List")
         }
-        .navigationTitle("New List")
     }
 }
 

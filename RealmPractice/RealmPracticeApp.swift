@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct RealmPracticeApp: App {
+    let migrator = Migrator()
+    
     var body: some Scene {
         WindowGroup {
             let _ = UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")

@@ -17,13 +17,18 @@ struct Home: View {
             VStack {
                 if !shoppingLists.isEmpty {
                     List {
-                        ForEach(shoppingLists, id:\.self) { item in
-                            VStack(alignment: .leading) {
-                                Text(item.title)
-                                Text(item.address)
-                                    .font(.callout)
-                                    .foregroundColor(.gray)
+                        ForEach(shoppingLists, id:\.self) { shoppingList in
+                            NavigationLink {
+                                ShoppingListItemsView(shoppingList: shoppingList)
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text(shoppingList.title)
+                                    Text(shoppingList.address)
+                                        .font(.callout)
+                                        .foregroundColor(.gray)
+                                }
                             }
+
                         }
                         .onDelete(perform: $shoppingLists.remove)
                     }
