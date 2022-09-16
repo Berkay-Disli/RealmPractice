@@ -49,8 +49,7 @@ struct AddShoppingListItemView: View {
                     newShoppingItem.category = selectedCategory
                     $shoppingList.items.append(newShoppingItem)
                     
-                    isPresented = false
-                    //dismiss()
+                    dismiss()
                 } label: {
                     Text("Save")
                         .frame(maxWidth: .infinity)
